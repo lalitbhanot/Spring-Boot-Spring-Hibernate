@@ -21,10 +21,14 @@ public CommandLineRunner commandLineRunner (AppDao appDao)
 {
 	return  runner ->{
 		// createInstructor(appDao);
-		findInstructor(appDao) ;
-		// deleteInstructor(appDao)
+		//findInstructor(appDao) ;
+		// deleteInstructor(appDao) ;
+		 findInstructorDetails(appDao);
 	};
 }
+
+	private void findInstructorDetails(AppDao appDao) {
+	}
 
 	private void createInstructor(AppDao appDao) {
 		// create the instructor

@@ -1,6 +1,7 @@
 package com.example.lalit.dao;
 
 import com.example.lalit.entity.Instructor;
+import com.example.lalit.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,11 @@ public class AppDaoImpl implements  AppDao{
         Instructor tempInstructor = entityManager.find(Instructor.class,id) ;
         entityManager.remove(tempInstructor);
     }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+        return entityManager.find(InstructorDetail.class,id);
+    }
+
+
 }
