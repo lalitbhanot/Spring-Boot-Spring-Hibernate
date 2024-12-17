@@ -24,10 +24,21 @@ public CommandLineRunner commandLineRunner (AppDao appDao)
 		//findInstructor(appDao) ;
 		// deleteInstructor(appDao) ;
 		 findInstructorDetails(appDao);
+		// deleteInstructorDetail(appDao);
 	};
 }
 
+	private void deleteInstructorDetail(AppDao appDao) {
+		int id=2;
+		appDao.deleteInstructorDetailsById(id);
+	}
+
 	private void findInstructorDetails(AppDao appDao) {
+		int id =1;
+		InstructorDetail instructorDetails = appDao.findInstructorDetailById(id) ;
+		System.out.println(instructorDetails);
+		System.out.println(instructorDetails.getInstructor());
+
 	}
 
 	private void createInstructor(AppDao appDao) {
