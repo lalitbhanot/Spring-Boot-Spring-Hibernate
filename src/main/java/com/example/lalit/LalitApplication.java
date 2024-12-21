@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class LalitApplication {
 
@@ -19,9 +21,34 @@ public class LalitApplication {
 	public CommandLineRunner commandLineRunner (AppDao appDao)
 	{
 		return  runner ->{
-			 createInstructorWithCourses(appDao);
+			// createInstructorWithCourses(appDao);
+			//findInstructorWithCourses(appDao) ;
+			//findCoursesForInstructor(appDao) ;
+			findInstructorByIdJoinFetch(appDao);
 					};
 	}
+
+	private void findInstructorByIdJoinFetch(AppDao appDao) {
+		int id=1;
+		Instructor tempInstructor = appDao.findInstructorByIdJoinFetch(id);
+		System.out.println("tempInstructor : " + tempInstructor + " , " +tempInstructor.getCourses());
+
+
+	}
+
+	private void findCoursesForInstructor(AppDao appDao) {
+		int id=1;
+		Instructor tempInstructor = appDao.findInstructorById(id);
+		System.out.println("tempInstructor : " + tempInstructor );
+		List<Course> courses = appDao.findCoursesByInstructorId(id);
+		tempInstructor.setCourses(courses);
+		// for getting the tempinstructor courses there should be firt setcourses
+		System.out.println("tempInstructor courses : " + tempInstructor.getCourses() );
+
+	}
+
+
+
 
 	private void createInstructorWithCourses(AppDao appDao) {
 			// create the instructor
