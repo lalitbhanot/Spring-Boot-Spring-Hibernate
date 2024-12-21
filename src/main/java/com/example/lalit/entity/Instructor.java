@@ -21,7 +21,7 @@ public class Instructor {
 	private String email;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "instructor_detail_id")
-	private InstructorDetail instructorDetailId; // see line number 30 in InstructorDetail for the
+	private InstructorDetail instructorDetail; // see line number 30 in InstructorDetail for the
 													// @OneToOne(mappedBy="instructorDetailId"
 	// fetch type is EAGER so that the when parent is called then the child objects are also called for .
 	/*
@@ -77,12 +77,12 @@ public class Instructor {
 		this.email = email;
 	}
 
-	public InstructorDetail getInstructorDetailId() {
-		return instructorDetailId;
+	public InstructorDetail getInstructorDetail() {
+		return instructorDetail;
 	}
 
-	public void setInstructorDetailId(InstructorDetail instructorDetailId) {
-		this.instructorDetailId = instructorDetailId;
+	public void setInstructorDetail(InstructorDetail instructorDetail) {
+		this.instructorDetail = instructorDetail;
 	}
 
 	public List<Course> getCourses() {
@@ -112,7 +112,7 @@ public class Instructor {
 	@Override
 	public String toString() {
 		return "Instructor [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", instructor_detail_id=" + instructorDetailId + "]";
+				+ ", instructor_detail_id=" + instructorDetail + "]";
 	}
 
 }

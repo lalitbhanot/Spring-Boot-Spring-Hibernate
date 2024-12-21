@@ -27,7 +27,7 @@ public class InstructorDetail {
 
 	// This one is a fine grain method mapping to delete only the
 	// parent(instructorDetail) and not the child(instructor) associated with it .
-	@OneToOne(mappedBy = "instructorDetailId", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+	@OneToOne(mappedBy = "instructorDetail", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
 	private Instructor instructor;
 
