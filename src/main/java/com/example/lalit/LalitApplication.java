@@ -24,8 +24,24 @@ public class LalitApplication {
 			// createInstructorWithCourses(appDao);
 			//findInstructorWithCourses(appDao) ;
 			//findCoursesForInstructor(appDao) ;
-			findInstructorByIdJoinFetch(appDao);
+			//findInstructorByIdJoinFetch(appDao);
+			//updateInstructor(appDao) ;
+			updateCourse(appDao);
 					};
+	}
+
+	private void updateCourse(AppDao appDao) {
+	int id = 10 ;
+	Course course = appDao.findCourseById(id);
+	course.setTitle("New updated title");
+	appDao.update(course);
+	}
+
+	private void updateInstructor(AppDao appDao) {
+		int id = 1 ;
+		Instructor instructor =  appDao.findInstructorById(id) ;
+		instructor.setLast_name("new last name");
+		appDao.update(instructor);
 	}
 
 	private void findInstructorByIdJoinFetch(AppDao appDao) {
@@ -54,10 +70,8 @@ public class LalitApplication {
 			// create the instructor
 			Instructor tempInstructor = new Instructor("lalit1","bhanot1","email1@gmail.com") ;
 			InstructorDetail tempInstructorDetail = new InstructorDetail("youtubechannel1","somehobby1") ;
-
 			// associate the objects
 		tempInstructor.setInstructorDetail(tempInstructorDetail);
-
 		// Course
 		Course tempCourse = new Course("New Courses for saving");
 		tempInstructor.add(tempCourse);
