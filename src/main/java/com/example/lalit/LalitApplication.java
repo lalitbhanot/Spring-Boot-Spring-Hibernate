@@ -2,8 +2,7 @@ package com.example.lalit;
 
 import com.example.lalit.dao.AppDao;
 import com.example.lalit.entity.Course;
-import com.example.lalit.entity.Instructor;
-import com.example.lalit.entity.InstructorDetail;
+import com.example.lalit.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,63 +20,24 @@ public class LalitApplication {
 	public CommandLineRunner commandLineRunner (AppDao appDao)
 	{
 		return  runner ->{
-			// createInstructorWithCourses(appDao);
-			//findInstructorWithCourses(appDao) ;
-			//findCoursesForInstructor(appDao) ;
-			//findInstructorByIdJoinFetch(appDao);
-			//updateInstructor(appDao) ;
-			updateCourse(appDao);
+createCourseAndStudents(appDao) ;
 					};
 	}
 
-	private void updateCourse(AppDao appDao) {
-	int id = 10 ;
-	Course course = appDao.findCourseById(id);
-	course.setTitle("New updated title");
-	appDao.update(course);
-	}
+	private void createCourseAndStudents(AppDao appDao) {
 
-	private void updateInstructor(AppDao appDao) {
-		int id = 1 ;
-		Instructor instructor =  appDao.findInstructorById(id) ;
-		instructor.setLast_name("new last name");
-		appDao.update(instructor);
-	}
-
-	private void findInstructorByIdJoinFetch(AppDao appDao) {
-		int id=1;
-		Instructor tempInstructor = appDao.findInstructorByIdJoinFetch(id);
-		System.out.println("tempInstructor : " + tempInstructor + " , " +tempInstructor.getCourses());
-
-
-	}
-
-	private void findCoursesForInstructor(AppDao appDao) {
-		int id=1;
-		Instructor tempInstructor = appDao.findInstructorById(id);
-		System.out.println("tempInstructor : " + tempInstructor );
-		List<Course> courses = appDao.findCoursesByInstructorId(id);
-		tempInstructor.setCourses(courses);
-		// for getting the tempinstructor courses there should be firt setcourses
-		System.out.println("tempInstructor courses : " + tempInstructor.getCourses() );
-
+		// create a course
+Course tempCourse = new Course("nw course") ;
+		// create a student
+Student tempStudent1 = new Student("newStuFname","newStulName","email.com");
+Student tempStudent2  = new Student("newStuFname2","newStulName2","email.com2");
+		// add student to cousrse
+		tempCourse.addStudent(tempStudent1);
+		tempCourse.addStudent(tempStudent2);
+		//save the course
+		appDao.save(tempCourse);
 	}
 
 
-
-
-	private void createInstructorWithCourses(AppDao appDao) {
-			// create the instructor
-			Instructor tempInstructor = new Instructor("lalit1","bhanot1","email1@gmail.com") ;
-			InstructorDetail tempInstructorDetail = new InstructorDetail("youtubechannel1","somehobby1") ;
-			// associate the objects
-		tempInstructor.setInstructorDetail(tempInstructorDetail);
-		// Course
-		Course tempCourse = new Course("New Courses for saving");
-		tempInstructor.add(tempCourse);
-			// save the instructor
-			appDao.save(tempInstructor);
-		}
-
-	}
+}
 

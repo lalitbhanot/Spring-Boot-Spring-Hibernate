@@ -112,7 +112,7 @@ public class Instructor {
 	@Override
 	public String toString() {
 		return "Instructor [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", instructor_detail_id=" + instructorDetail + "]";
+				+ ", instructor_detail_id=" + instructorDetail+ "]";
 	}
 
 }

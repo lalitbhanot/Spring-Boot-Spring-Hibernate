@@ -1,7 +1,7 @@
 package com.example.lalit.entity;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 @Entity
 @Table(name = "instructor_detail")
 public class InstructorDetail {
